@@ -1,42 +1,36 @@
-Perfect 👍 I’ll make your **single README file** for the repository in a **professional yet impressive** way.
-This version will look **clean, recruiter-friendly, and technically meaningful**.
+# VLSI Major Projects in Verilog HDL 🚀  
 
-Here’s the final **README.md** you can directly use:
+This repository contains my self-developed **VLSI major projects** implemented in **Verilog HDL**.  
+I created these projects as part of my **advanced learning journey** to strengthen RTL design, verification, and on-chip communication protocol understanding.  
 
-````markdown
-# VLSI Major Projects in Verilog HDL 🚀
-
-This repository contains my **self-developed VLSI major projects** implemented in **Verilog HDL**.  
-The projects focus on **on-chip AMBA communication protocols** and **peripheral protocols**, covering both **RTL design** and **verification testbenches**.  
-All work has been carried out as **self-projects** to enhance my practical learning and strengthen my skills in **digital design and verification**.
+Each project includes Verilog design files, testbenches, and simulation support.
 
 ---
 
-## 📂 Repository Structure
+## 📂 Project Structure
 
 ### 🔹 On-Chip AMBA Protocols
-- [AHB](./ONCHIP_AMBA_PROTOCOLS/AHB) – Advanced High-performance Bus  
-- [APB](./ONCHIP_AMBA_PROTOCOLS/APB) – Advanced Peripheral Bus  
-- [AXI](./ONCHIP_AMBA_PROTOCOLS/AXI) – Advanced eXtensible Interface  
-- [AHB–APB Bridge](./ONCHIP_AMBA_PROTOCOLS/AHB_APB_BRIDGE) – Cross-domain protocol bridge  
+- **[AHB](./ONCHIP_AMBA_PROTOCOLS/AHB)**  
+- **[APB](./ONCHIP_AMBA_PROTOCOLS/APB)**  
+- **[AXI](./ONCHIP_AMBA_PROTOCOLS/AXI)**  
+- **[AHB–APB Bridge](./ONCHIP_AMBA_PROTOCOLS/AHB_APB_BRIDGE)**  
 
 ### 🔹 Peripheral Protocols
-- [I2C](./PERIPHERAL_PROTOCOLS/I2C) – Inter-Integrated Circuit  
-- [SPI](./PERIPHERAL_PROTOCOLS/SPI) – Serial Peripheral Interface  
-- [UART](./PERIPHERAL_PROTOCOLS/UART) – Universal Asynchronous Receiver-Transmitter  
+- **[I2C](./PERIPHERAL_PROTOCOLS/I2C)**  
+- **[SPI](./PERIPHERAL_PROTOCOLS/SPI)**  
+- **[UART](./PERIPHERAL_PROTOCOLS/UART)**  
 
 ---
 
-## 🛠️ Tools & Technologies
-- **Verilog HDL** – RTL design & testbench coding  
-- **Icarus Verilog** – [Download](https://steveicarus.github.io/iverilog/) (for compiling & simulation)  
-- **GTKWave** – [Download](http://gtkwave.sourceforge.net/) (for waveform visualization)  
+## 🛠️ Tools Used
+- **Icarus Verilog** → [Download Here](https://steveicarus.github.io/iverilog/)  
+- **GTKWave** (for waveform viewing) → [Download Here](http://gtkwave.sourceforge.net/)  
 
 ---
 
 ## ▶️ How to Run the Projects
 
-1. **Clone the repository**
+1. **Clone this Repository**
    ```bash
    git clone https://github.com/TEJAR-EDDY/VLSI_MAJOR_PROJECTS.git
    cd VLSI_MAJOR_PROJECTS
