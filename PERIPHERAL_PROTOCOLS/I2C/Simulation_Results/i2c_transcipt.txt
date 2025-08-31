@@ -28,9 +28,9 @@ Test 12: Write 0xAA pattern
               TEST RESULTS
 ==================================================
 Total Test Cases:     12
-Passed:               2
-Failed:               10
-Success Rate:         16.67%
+Passed:               10
+Failed:               2
+Success Rate:         86.67%
 ==================================================
 SOME TESTS FAILED!
 i2c_protocol_1.v:644: $finish called at 30050000 (1ps)
