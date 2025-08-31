@@ -1,0 +1,71 @@
+=== APB System Verification Started ===
+
+[TEST 1] Basic Write Test
+    WRITE: Addr=0x00000000, Data=0xa5a5a5a5, Error=0
+    Γ£ô PASS:                      Basic Write
+    WRITE: Addr=0x00000004, Data=0x12345678, Error=0
+    Γ£ô PASS:                    Basic Write 2
+
+[TEST 2] Basic Read Test
+    READ:  Addr=0x00000000, Data=0x00000000, Error=0
+    Γ£ô PASS:               Basic Read Slave 0
+    READ:  Addr=0x00010000, Data=0xa5a5a5a5, Error=0
+    Γ£ù FAIL:               Basic Read Slave 1 - Expected: Data=0x01000000, Error=0 | Got: Data=0xa5a5a5a5, Error=0
+
+[TEST 3] Write-Read Sequence Test
+    WRITE: Addr=0x00000008, Data=0xdeadbeef, Error=0
+    Γ£ô PASS:                Write in sequence
+    READ:  Addr=0x00000008, Data=0x01000000, Error=0
+    Γ£ù FAIL:                        Read back - Expected: Data=0xdeadbeef, Error=0 | Got: Data=0x01000000, Error=0
+    WRITE: Addr=0x00010004, Data=0xcafebabe, Error=0
+    Γ£ô PASS:                    Write Slave 1
+    READ:  Addr=0x00010004, Data=0xdeadbeef, Error=0
+    Γ£ù FAIL:                     Read Slave 1 - Expected: Data=0xcafebabe, Error=0 | Got: Data=0xdeadbeef, Error=0
+
+[TEST 4] Multi-Slave Access Test
+  Accessing Slave 0 at address 0x00000000
+    WRITE: Addr=0x00000000, Data=0xa0000000, Error=0
+    Γ£ô PASS: lti-slave write    0
+    READ:  Addr=0x00000000, Data=0xcafebabe, Error=0
+    Γ£ù FAIL: ulti-slave read    0 - Expected: Data=0xa0000000, Error=0 | Got: Data=0xcafebabe, Error=0
+  Accessing Slave 1 at address 0x00010000
+    WRITE: Addr=0x00010000, Data=0xa0000001, Error=0
+    Γ£ô PASS: lti-slave write    1
+    READ:  Addr=0x00010000, Data=0xa0000000, Error=0
+    Γ£ù FAIL: ulti-slave read    1 - Expected: Data=0xa0000001, Error=0 | Got: Data=0xa0000000, Error=0
+  Accessing Slave 2 at address 0x00020000
+    WRITE: Addr=0x00020000, Data=0xa0000002, Error=0
+    Γ£ô PASS: lti-slave write    2
+    READ:  Addr=0x00020000, Data=0xa0000001, Error=0
+    Γ£ù FAIL: ulti-slave read    2 - Expected: Data=0xa0000002, Error=0 | Got: Data=0xa0000001, Error=0
+
+[TEST 5] Wait States Test
+  Testing Slave 2 (2 wait states)
+    WRITE: Addr=0x00020000, Data=0x55555555, Error=0
+    Γ£ô PASS:                Wait states write
+    READ:  Addr=0x00020000, Data=0xa0000002, Error=0
+    Γ£ù FAIL:                 Wait states read - Expected: Data=0x55555555, Error=0 | Got: Data=0xa0000002, Error=0
+
+[TEST 6] Error Conditions Test
+    READ:  Addr=0xff000000, Data=0x55555555, Error=0
+    Γ£ù FAIL:                  Invalid address - Expected: Data=0x00000000, Error=1 | Got: Data=0x55555555, Error=0
+    WRITE: Addr=0x80000000, Data=0x12345678, Error=0
+    Γ£ù FAIL:            Invalid write address - Error expected but not received
+
+[TEST 7] Back-to-Back Transfers Test
+    WRITE: Addr=0x00000010, Data=0x11111111, Error=0
+    Γ£ô PASS:                   Back-to-back 1
+    WRITE: Addr=0x00000014, Data=0x22222222, Error=0
+    Γ£ô PASS:                   Back-to-back 2
+    READ:  Addr=0x00000010, Data=0x00000000, Error=0
+    Γ£ù FAIL:              Back-to-back read 1 - Expected: Data=0x11111111, Error=0 | Got: Data=0x00000000, Error=0
+    READ:  Addr=0x00000014, Data=0x11111111, Error=0
+    Γ£ù FAIL:              Back-to-back read 2 - Expected: Data=0x22222222, Error=0 | Got: Data=0x11111111, Error=0
+
+=== Test Results Summary ===
+Total Tests: 22
+Passed:      11
+Failed:      11
+Success Rate: 50.0%
+Γ¥î Some tests failed. Check logs above.
+apb_protocol.v:513: $finish called at 1975000 (1ps)

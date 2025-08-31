@@ -1,0 +1,75 @@
+=== Starting AHB Protocol Verification ===
+
+TEST 0: Single Write to 0x00000000 = 0x12345678
+  PASS: Write completed successfully
+TEST 1: Single Read from 0x00000000 (expect 0x12345678)
+  PASS: Read data 0x12345678 matches expected
+TEST 2: Single Write to 0x10000004 = 0xaabbccdd
+  PASS: Write completed successfully
+TEST 3: Single Read from 0x10000004 (expect 0xaabbccdd)
+  FAIL: Read data 0x00000000 != expected 0xaabbccdd
+TEST 4: Single Write to 0x20000008 = 0x55aa55aa
+  PASS: Write completed successfully
+TEST 5: Single Read from 0x20000008 (expect 0x55aa55aa)
+  PASS: Read data 0x55aa55aa matches expected
+TEST 6: Single Write to 0x3000000c = 0xf0f0f0f0
+  PASS: Write completed successfully
+TEST 7: Single Read from 0x3000000c (expect 0xf0f0f0f0)
+  PASS: Read data 0xf0f0f0f0 matches expected
+TEST 8: Burst Write to 0x00000010, type=3, length=4
+  PASS: Burst write completed successfully
+TEST 9: Burst Write to 0x00000020, type=5, length=8
+  PASS: Burst write completed successfully
+TEST 10: Burst Write to 0x00000100, type=2, length=4
+  PASS: Burst write completed successfully
+TEST 11: Single Write to 0x10000010 = 0x57414954
+  PASS: Write completed successfully
+TEST 12: Single Read from 0x10000010 (expect 0x57414954)
+  FAIL: Read data 0x00000000 != expected 0x57414954
+TEST 13: Error Response Test (Invalid Address)
+  PASS: Error correctly detected for invalid address
+TEST 14: Single Write to 0x0ffffffc = 0x424f554e
+  PASS: Write completed successfully
+TEST 15: Single Read from 0x0ffffffc (expect 0x424f554e)
+  PASS: Read data 0x424f554e matches expected
+
+=== Additional Timer Tests to Verify Fix ===
+TEST 16: Single Write to 0x10000000 = 0x11111111
+  PASS: Write completed successfully
+TEST 17: Single Read from 0x10000000 (expect 0x11111111)
+  FAIL: Read data 0x00000000 != expected 0x11111111
+TEST 18: Single Write to 0x10000008 = 0x22222222
+  PASS: Write completed successfully
+TEST 19: Single Read from 0x10000008 (expect 0x22222222)
+  FAIL: Read data 0x00000000 != expected 0x22222222
+TEST 20: Single Write to 0x1000000c = 0x33333333
+  PASS: Write completed successfully
+TEST 21: Single Read from 0x1000000c (expect 0x33333333)
+  FAIL: Read data 0x00000000 != expected 0x33333333
+
+=== Cross-Verification of All Slaves ===
+TEST 22: Single Write to 0x00000100 = 0xdead0000
+  PASS: Write completed successfully
+TEST 23: Single Write to 0x10000100 = 0xdead1111
+  PASS: Write completed successfully
+TEST 24: Single Write to 0x20000100 = 0xdead2222
+  PASS: Write completed successfully
+TEST 25: Single Write to 0x30000100 = 0xdead3333
+  PASS: Write completed successfully
+TEST 26: Single Read from 0x00000100 (expect 0xdead0000)
+  PASS: Read data 0xdead0000 matches expected
+TEST 27: Single Read from 0x10000100 (expect 0xdead1111)
+  FAIL: Read data 0xdead2222 != expected 0xdead1111
+TEST 28: Single Read from 0x20000100 (expect 0xdead2222)
+  PASS: Read data 0xdead2222 matches expected
+TEST 29: Single Read from 0x30000100 (expect 0xdead3333)
+  PASS: Read data 0xdead3333 matches expected
+
+=== Test Results Summary ===
+Total Tests: 30
+Passed: 24
+Failed: 6
+Success Rate: 80.0%
+
+*** SOME TESTS FAILED. Please review the implementation. ***
+ahb_protocol.v:884: $finish called at 1785 (1s)

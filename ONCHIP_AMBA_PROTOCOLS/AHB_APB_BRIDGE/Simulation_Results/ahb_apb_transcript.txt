@@ -1,0 +1,55 @@
+==================================================
+     AHB ΓåÆ APB Bridge Test Started
+==================================================
+Starting AHB Write: Addr=0x00000004, Data=0xdeadbeef
+[235] SLAVE0 WRITE Addr=0x00000004 Data=0xdeadbeef -> mem[1]
+AHB Write completed
+PASS T1
+Starting AHB Read: Addr=0x00000008
+[255] SLAVE0 WRITE Addr=0x00000004 Data=0xdeadbeef -> mem[1]
+[295] SLAVE0 READ  Addr=0x00000008 Data=0x00000000 <- mem[2]
+AHB Read completed: Data=0x00000000
+FAIL T2
+Starting AHB Write: Addr=0x00010000, Data=0x12345678
+[315] SLAVE0 READ  Addr=0x00000008 Data=0xcafebabe <- mem[2]
+[355] SLAVE1 WRITE Addr=0x00010000 Data=0x12345678 -> mem[0]
+AHB Write completed
+PASS T3
+Starting AHB Write: Addr=0x00020000, Data=0x87654321
+[375] SLAVE1 WRITE Addr=0x00010000 Data=0x12345678 -> mem[0]
+[415] SLAVE2 WRITE Addr=0x00020000 Data=0x87654321 -> mem[0]
+AHB Write completed
+PASS T4
+Starting AHB Write: Addr=0x00000010, Data=0xaaaa5555
+[435] SLAVE2 WRITE Addr=0x00020000 Data=0x87654321 -> mem[0]
+[475] SLAVE0 WRITE Addr=0x00000010 Data=0xaaaa5555 -> mem[4]
+AHB Write completed
+Starting AHB Write: Addr=0x00000014, Data=0x5555aaaa
+[495] SLAVE0 WRITE Addr=0x00000010 Data=0xaaaa5555 -> mem[4]
+[535] SLAVE0 WRITE Addr=0x00000014 Data=0x5555aaaa -> mem[5]
+AHB Write completed
+PASS T5
+Starting AHB Read: Addr=0x00000004
+[555] SLAVE0 WRITE Addr=0x00000014 Data=0x5555aaaa -> mem[5]
+[595] SLAVE0 READ  Addr=0x00000004 Data=0xcafebabe <- mem[1]
+AHB Read completed: Data=0xcafebabe
+FAIL T6
+Starting AHB Read: Addr=0x00010000
+[615] SLAVE0 READ  Addr=0x00000004 Data=0xdeadbeef <- mem[1]
+[655] SLAVE1 READ  Addr=0x00010000 Data=0x00000000 <- mem[0]
+AHB Read completed: Data=0x00000000
+FAIL T7
+Starting AHB Read: Addr=0x00020000
+[675] SLAVE1 READ  Addr=0x00010000 Data=0x12345678 <- mem[0]
+[715] SLAVE2 READ  Addr=0x00020000 Data=0x00000000 <- mem[0]
+AHB Read completed: Data=0x00000000
+FAIL T8
+
+==================================================
+                TEST RESULTS
+==================================================
+Total: 8  Passed: 4  Failed: 4
+Success Rate: 50%
+Γ¥î *** 4 TEST(S) FAILED ***
+[735] SLAVE2 READ  Addr=0x00020000 Data=0x87654321 <- mem[0]
+bridge_protocol.v:373: $finish called at 775 (1s)

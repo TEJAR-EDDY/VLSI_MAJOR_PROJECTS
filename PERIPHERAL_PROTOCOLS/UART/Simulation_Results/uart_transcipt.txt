@@ -1,0 +1,38 @@
+=== UART Testbench Started ===
+Clock Frequency: 50000000 Hz
+Baud Rate: 115200 bps
+Baud Divisor: 434
+
+--- Test 1: Basic Transmission (No Parity) ---
+Time 87130: Transmission completed
+Transmitted: 0x55, Parity: None, Stop Bits: 1
+
+--- Test 2: Even Parity Transmission ---
+Time 182610: Transmission completed
+Transmitted: 0xaa, Parity: Even, Stop Bits: 1
+
+--- Test 3: Odd Parity Transmission ---
+Time 278090: Transmission completed
+Transmitted: 0x0f, Parity:  Odd, Stop Bits: 1
+
+--- Test 4: Two Stop Bits ---
+Time 373570: Transmission completed
+Transmitted: 0xcc, Parity: None, Stop Bits: 2
+
+--- Test 5: Loopback Test ---
+Loopback Test FAILED: Sent=0x96, Received=0x2c
+
+--- Test 6: Error Detection Tests ---
+Testing Frame Error Detection...
+Time 451230: Received data: 0x2c
+Time 460370: Transmission completed
+Time 526290: FRAME ERROR detected
+Time 530610: Received data: 0xaa
+Frame Error Test FAILED - Error not detected
+
+=== Test Summary ===
+Total Tests: 6
+Passed: 4
+Failed: 2
+*** 2 TESTS FAILED ***
+uart_protocol_single_code.v:267: $finish called at 544010 (1s)

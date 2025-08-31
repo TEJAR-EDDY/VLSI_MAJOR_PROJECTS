@@ -1,0 +1,148 @@
+=================================
+    AXI4-Lite Protocol Test
+    FIXED VERSION
+=================================
+VCD info: dumpfile axi4_lite_tb.vcd opened for output.
+
+--- Test Case 1: Basic Write Single Beat ---
+=== Applying Reset ===
+=== Reset Complete ===
+Time: 155 | Write: Addr=0x00000000, Data=0xdeadbeef, Strb=0xf, Resp=0
+Γ£ô PASS: Basic Write Response - Expected: 0, Got: 0
+
+--- Test Case 2: Basic Read Single Beat ---
+Time: 235 | Read: Addr=0x00000000, Data=0xdeadbeef, Resp=0
+Γ£ô PASS: Basic Read - Expected: 0xdeadbeef, Got: 0xdeadbeef
+Γ£ô PASS: Basic Read Response - Expected: 0, Got: 0
+
+--- Test Case 3: Write with Byte Enables ---
+Time: 325 | Write: Addr=0x00000004, Data=0xffffffff, Strb=0xf, Resp=0
+Time: 415 | Write: Addr=0x00000004, Data=0x12345678, Strb=0x3, Resp=0
+Time: 495 | Read: Addr=0x00000004, Data=0xffff5678, Resp=0
+Γ£ô PASS: Byte Enable Write - Expected: 0xffff5678, Got: 0xffff5678
+Γ£ô PASS: Byte Enable Write Response - Expected: 0, Got: 0
+
+--- Test Case 4: Multiple Sequential Writes ---
+Time: 585 | Write: Addr=0x00000010, Data=0xa0000000, Strb=0xf, Resp=0
+Γ£ô PASS: Sequential Write Response - Expected: 0, Got: 0
+Time: 675 | Write: Addr=0x00000014, Data=0xa0000001, Strb=0xf, Resp=0
+Γ£ô PASS: Sequential Write Response - Expected: 0, Got: 0
+Time: 765 | Write: Addr=0x00000018, Data=0xa0000002, Strb=0xf, Resp=0
+Γ£ô PASS: Sequential Write Response - Expected: 0, Got: 0
+Time: 855 | Write: Addr=0x0000001c, Data=0xa0000003, Strb=0xf, Resp=0
+Γ£ô PASS: Sequential Write Response - Expected: 0, Got: 0
+Time: 935 | Read: Addr=0x00000010, Data=0xa0000000, Resp=0
+Γ£ô PASS: Sequential Read - Expected: 0xa0000000, Got: 0xa0000000
+Γ£ô PASS: Sequential Read Response - Expected: 0, Got: 0
+Time: 1015 | Read: Addr=0x00000014, Data=0xa0000001, Resp=0
+Γ£ô PASS: Sequential Read - Expected: 0xa0000001, Got: 0xa0000001
+Γ£ô PASS: Sequential Read Response - Expected: 0, Got: 0
+Time: 1095 | Read: Addr=0x00000018, Data=0xa0000002, Resp=0
+Γ£ô PASS: Sequential Read - Expected: 0xa0000002, Got: 0xa0000002
+Γ£ô PASS: Sequential Read Response - Expected: 0, Got: 0
+Time: 1175 | Read: Addr=0x0000001c, Data=0xa0000003, Resp=0
+Γ£ô PASS: Sequential Read - Expected: 0xa0000003, Got: 0xa0000003
+Γ£ô PASS: Sequential Read Response - Expected: 0, Got: 0
+
+--- Test Case 5: Write-Read-Write Pattern ---
+Time: 1265 | Write: Addr=0x00000020, Data=0xcafebabe, Strb=0xf, Resp=0
+Γ£ô PASS: WRW Pattern First Write Response - Expected: 0, Got: 0
+Time: 1345 | Read: Addr=0x00000020, Data=0xcafebabe, Resp=0
+Γ£ô PASS: WRW Pattern Read - Expected: 0xcafebabe, Got: 0xcafebabe
+Γ£ô PASS: WRW Pattern Read Response - Expected: 0, Got: 0
+Time: 1435 | Write: Addr=0x00000020, Data=0xfeedface, Strb=0xf, Resp=0
+Γ£ô PASS: WRW Pattern Second Write Response - Expected: 0, Got: 0
+Time: 1515 | Read: Addr=0x00000020, Data=0xfeedface, Resp=0
+Γ£ô PASS: WRW Pattern Final Read - Expected: 0xfeedface, Got: 0xfeedface
+Γ£ô PASS: WRW Pattern Final Read Response - Expected: 0, Got: 0
+
+--- Test Case 6: Error Response Test ---
+Time: 1605 | Write: Addr=0xffffffff, Data=0x11111111, Strb=0xf, Resp=2
+Γ£ô PASS: Invalid Write Address Response - Expected: 2, Got: 2
+Time: 1685 | Read: Addr=0xffffffff, Data=0x00000000, Resp=2
+Γ£ô PASS: Invalid Read Address Response - Expected: 2, Got: 2
+Γ£ô PASS: Invalid Read Data - Expected: 0x00000000, Got: 0x00000000
+
+--- Test Case 7: Boundary Address Test ---
+Time: 1775 | Write: Addr=0x000003fc, Data=0x5a5aa5a5, Strb=0xf, Resp=0
+Γ£ô PASS: Boundary Address Write Response - Expected: 0, Got: 0
+Time: 1855 | Read: Addr=0x000003fc, Data=0x5a5aa5a5, Resp=0
+Γ£ô PASS: Boundary Address Read - Expected: 0x5a5aa5a5, Got: 0x5a5aa5a5
+Γ£ô PASS: Boundary Address Read Response - Expected: 0, Got: 0
+
+--- Test Case 8: Byte Enable Patterns ---
+Time: 1945 | Write: Addr=0x00000030, Data=0x00000000, Strb=0xf, Resp=0
+Time: 2035 | Write: Addr=0x00000030, Data=0xaabbccdd, Strb=0x1, Resp=0
+Time: 2115 | Read: Addr=0x00000030, Data=0x000000dd, Resp=0
+Γ£ô PASS: Byte Enable 0x1 - Expected: 0x000000dd, Got: 0x000000dd
+Time: 2205 | Write: Addr=0x00000030, Data=0xaabbccdd, Strb=0x2, Resp=0
+Time: 2285 | Read: Addr=0x00000030, Data=0x0000ccdd, Resp=0
+Γ£ô PASS: Byte Enable 0x2 - Expected: 0x0000ccdd, Got: 0x0000ccdd
+Time: 2375 | Write: Addr=0x00000030, Data=0xaabbccdd, Strb=0x4, Resp=0
+Time: 2455 | Read: Addr=0x00000030, Data=0x00bbccdd, Resp=0
+Γ£ô PASS: Byte Enable 0x4 - Expected: 0x00bbccdd, Got: 0x00bbccdd
+Time: 2545 | Write: Addr=0x00000030, Data=0xaabbccdd, Strb=0x8, Resp=0
+Time: 2625 | Read: Addr=0x00000030, Data=0xaabbccdd, Resp=0
+Γ£ô PASS: Byte Enable 0x8 - Expected: 0xaabbccdd, Got: 0xaabbccdd
+
+--- Test Case 9: Random Data Pattern Test ---
+Time: 2715 | Write: Addr=0x00000204, Data=0x12153524, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 2795 | Read: Addr=0x00000204, Data=0x12153524, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x12153524, Got: 0x12153524
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 2885 | Write: Addr=0x0000018c, Data=0x8484d609, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 2965 | Read: Addr=0x0000018c, Data=0x8484d609, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x8484d609, Got: 0x8484d609
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 3055 | Write: Addr=0x00000234, Data=0x06b97b0d, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 3135 | Read: Addr=0x00000234, Data=0x06b97b0d, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x06b97b0d, Got: 0x06b97b0d
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 3225 | Write: Addr=0x00000048, Data=0xb2c28465, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 3305 | Read: Addr=0x00000048, Data=0xb2c28465, Resp=0
+Γ£ô PASS: Random Read - Expected: 0xb2c28465, Got: 0xb2c28465
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 3395 | Write: Addr=0x00000034, Data=0x00f3e301, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 3475 | Read: Addr=0x00000034, Data=0x00f3e301, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x00f3e301, Got: 0x00f3e301
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 3565 | Write: Addr=0x000000f4, Data=0x3b23f176, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 3645 | Read: Addr=0x000000f4, Data=0x3b23f176, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x3b23f176, Got: 0x3b23f176
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 3735 | Write: Addr=0x00000230, Data=0x76d457ed, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 3815 | Read: Addr=0x00000230, Data=0x76d457ed, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x76d457ed, Got: 0x76d457ed
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 3905 | Write: Addr=0x00000318, Data=0x7cfde9f9, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 3985 | Read: Addr=0x00000318, Data=0x7cfde9f9, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x7cfde9f9, Got: 0x7cfde9f9
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 4075 | Write: Addr=0x000002a8, Data=0xe2f784c5, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 4155 | Read: Addr=0x000002a8, Data=0xe2f784c5, Resp=0
+Γ£ô PASS: Random Read - Expected: 0xe2f784c5, Got: 0xe2f784c5
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+Time: 4245 | Write: Addr=0x000001dc, Data=0x72aff7e5, Strb=0xf, Resp=0
+Γ£ô PASS: Random Write Response - Expected: 0, Got: 0
+Time: 4325 | Read: Addr=0x000001dc, Data=0x72aff7e5, Resp=0
+Γ£ô PASS: Random Read - Expected: 0x72aff7e5, Got: 0x72aff7e5
+Γ£ô PASS: Random Read Response - Expected: 0, Got: 0
+
+=================================
+        Test Summary
+=================================
+Total Tests: 63
+Passed: 63
+Failed: 0
+Γ£ô ALL TESTS PASSED!
+=================================
+axi4_lite_protocol.v:962: $finish called at 4425 (1s)

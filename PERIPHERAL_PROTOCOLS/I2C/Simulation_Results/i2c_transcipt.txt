@@ -1,0 +1,36 @@
+=== I2C Test Suite ===
+Test 1: Basic Write to Slave 1
+  FAIL: Expected ACK but got NACK or error
+Test 2: Basic Write to Slave 2
+  FAIL: Expected ACK but got NACK or error
+Test 3: Basic Write to Slave 3
+  FAIL: Expected ACK but got NACK or error
+Test 4: Basic Read from Slave 1
+  FAIL: Expected ACK but got NACK or error
+Test 5: Basic Read from Slave 2
+  FAIL: Expected ACK but got NACK or error
+Test 6: Basic Read from Slave 3
+  FAIL: Expected ACK but got NACK or error
+Test 7: Non-existent Slave Write
+  PASS: NACK received as expected
+Test 8: Non-existent Slave Read
+  PASS: NACK received as expected
+Test 9: Write 0x00 pattern
+  FAIL: Expected ACK but got NACK or error
+Test 10: Write 0xFF pattern
+  FAIL: Expected ACK but got NACK or error
+Test 11: Write 0x55 pattern
+  FAIL: Expected ACK but got NACK or error
+Test 12: Write 0xAA pattern
+  FAIL: Expected ACK but got NACK or error
+
+==================================================
+              TEST RESULTS
+==================================================
+Total Test Cases:     12
+Passed:               2
+Failed:               10
+Success Rate:         16.67%
+==================================================
+SOME TESTS FAILED!
+i2c_protocol_1.v:644: $finish called at 30050000 (1ps)
