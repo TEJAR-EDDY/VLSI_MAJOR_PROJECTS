@@ -105,18 +105,10 @@ gtkwave spi_wave.vcd
 * Extend verification with **SystemVerilog & UVM**
 * Apply **functional coverage + assertions**
 * Prototype on FPGA with **real SPI peripherals (e.g., ADC, EEPROM)**
-
----
-
-## 👤 Author
-
-**Your Name**
-🎓 VLSI Design & Verification Enthusiast
-🔗 [GitHub](https://github.com/yourprofile) | [LinkedIn](https://linkedin.com/in/yourprofile)
-
 ---
 
 ✨ *This project is a self-learning mini project to build confidence in digital protocol design and verification.*
 
 ---
+
 
