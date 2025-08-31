@@ -94,7 +94,7 @@ gtkwave uart_wave.vcd
 
 ## 📸 Example Waveforms
 
-*https://github.com/TEJAR-EDDY/VLSI_MAJOR_PROJECTS/tree/main/PERIPHERAL_PROTOCOLS/UART/Simulation_Results*
+* https://github.com/TEJAR-EDDY/VLSI_MAJOR_PROJECTS/tree/main/PERIPHERAL_PROTOCOLS/UART/Simulation_Results
 ---
 
 ## 📚 References
@@ -119,3 +119,4 @@ gtkwave uart_wave.vcd
 ✨ *This project is part of my self-learning journey in Digital Design & Verification, building strong protocol-level fundamentals.*
 
 ---
+
