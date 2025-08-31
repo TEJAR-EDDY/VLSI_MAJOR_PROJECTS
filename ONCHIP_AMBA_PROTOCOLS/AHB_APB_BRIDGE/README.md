@@ -40,13 +40,12 @@ It is part of my **self-learning VLSI projects** to enhance skills in **AMBA pro
 ## 📂 Project Structure
 
 ```
-
-```
 📁 AHB_APB _BRIDGE -Protocol
 📁 RTL_Design/          # RTL code in Verilog (FSM-based controller)
 📁 Test_Bench/          # Testbench code (stimulus, monitors, assertions)
 📁 Simulation_Results/  # VCD waveforms, logs, coverage reports
 📁 Reports_Final_docs/  # Project documentation, design report, synthesis results
+```
 
 ---
 
@@ -110,3 +109,4 @@ https://github.com/TEJAR-EDDY/VLSI_MAJOR_PROJECTS/tree/main/ONCHIP_AMBA_PROTOCOL
 ✨ *This project is part of my self-learning journey to strengthen fundamentals in AMBA bus protocols and SoC integration.*
 
 ---
+
