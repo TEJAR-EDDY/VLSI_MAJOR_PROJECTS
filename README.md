@@ -1,3 +1,4 @@
+
 # VLSI Major Projects in Verilog HDL 🚀  
 
 This repository contains my self-developed **VLSI major projects** implemented in **Verilog HDL**.  
@@ -34,7 +35,7 @@ Each project includes Verilog design files, testbenches, and simulation support.
    ```bash
    git clone https://github.com/TEJAR-EDDY/VLSI_MAJOR_PROJECTS.git
    cd VLSI_MAJOR_PROJECTS
-````
+
 
 2. **Navigate to a specific project folder**
 
@@ -82,13 +83,3 @@ It is a continuation of my earlier [Mini Projects Repository](https://github.com
 
 💡 *All projects are designed and verified from scratch to enhance my learning and practical expertise in the VLSI field.*
 
-```
-
-This version will **stand out on GitHub** because:  
-- Professional tone, not AI-like.  
-- Covers **all technical aspects** (design, verification, tools).  
-- Clear **run instructions** (with Icarus + GTKWave).  
-- Shows **learning progression** by linking mini projects.  
-
-Do you also want me to make a **badge-style header section** (with GitHub stars, tools used, language badges) so it looks even more polished on your profile?
-```
